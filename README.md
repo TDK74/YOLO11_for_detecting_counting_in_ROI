@@ -15,5 +15,10 @@ Her Youtube tutorial on how to install OpenCV on NVIDIA Jetson Nano saved me a l
 
 See **_pip_freeze.txt_** for more details if interested.
 
-## Note
+## Notes
 The code was refactored by me in certain extent.
+
+The test video is not uploaded, because it is shaky and not professional, since it has been taken in the street by me. Use your own video instead or downloaded from the Internet. Sorry!
+
+<img src="https://github.com/user-attachments/assets/af2f5106-7120-4447-a000-0f1921230929" width="50%">
+
