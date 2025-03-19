@@ -1,4 +1,4 @@
-# YOLO11_for_detecting_counting
+# YOLO11 for detecting and counting of moving objects in Region Of Interest (ROI)
 Inspired by Aarohi Singla's "Vehicle-detection-and-tracking-classwise-using-YOLO11" GitHub repository.
 
 <https://github.com/AarohiSingla/Vehicle-detection-and-tracking-classwise-using-YOLO11>
