@@ -14,7 +14,8 @@ def load_model(model_path, device = 'cuda'):
 
     Args:
         model_path (str): Path to the YOLO model file.
-        device (str, optional): Device to load the model to ('cuda' or 'cpu'). Defaults to 'cuda'.
+        device (str, optional): Device to load the model to ('cuda' or 'cpu').
+        Defaults to 'cuda'.
 
     Returns:
         YOLO: Loaded YOLO model.
@@ -70,7 +71,7 @@ def process_objects(frame, model, object_counters, entered_ids):
         numpy.ndarray: Modified frame with bounding boxes and counters.
     """
     try:
-        results = model.track(frame, persist = True, classes = [0, 2, 7], device = 'cuda')
+        results = model.track(frame, persist = True, classes = [0, 2, 7],device = 'cuda')
 
         cv2.rectangle(frame, (RECT_X1, RECT_Y1), (RECT_X2, RECT_Y2), (255, 0, 0), 2)
 
@@ -85,10 +86,12 @@ def process_objects(frame, model, object_counters, entered_ids):
 
                 object_name = model.names[class_idx]
 
-                cv2.putText(frame, f"ID: {track_id} {object_name}", (x1 - 5, y1 - 10), FONT, 0.5, (0, 255, 255), 2)
+                cv2.putText(frame, f"ID: {track_id} {object_name}", (x1 - 5, y1 - 10),
+                            FONT, 0.5, (0, 255, 255), 2)
                 cv2.rectangle(frame, (x1, y1), (x2, y2), (255, 255, 0), 2)
 
-                if (RECT_X1 < cx < RECT_X2 and RECT_Y1 < cy < RECT_Y2) and track_id not in entered_ids:
+                if (RECT_X1 < cx < RECT_X2 and RECT_Y1 < cy < RECT_Y2)\
+                    and track_id not in entered_ids:
                     entered_ids.add(track_id)
                     object_counters[object_name] = object_counters.get(object_name, 0) + 1
 
@@ -117,7 +120,8 @@ def display_counters(frame, object_counters):
     y_offset = COUNTER_TEXT_OFFSET
 
     for object_name, counter in object_counters.items():
-        cv2.putText(frame, f"{object_name}: {counter}", (34, y_offset), FONT, 0.8, (0, 0, 0), 2)
+        cv2.putText(frame, f"{object_name}: {counter}", (34, y_offset),
+                    FONT, 0.8, (0, 0, 0), 2)
         y_offset += COUNTER_TEXT_OFFSET
 
     return frame
@@ -132,7 +136,8 @@ def main():
     if model is None:
         return
 
-    vid_cap = open_video_capture('videos/street.mp4')    # Enter here your path to your test video!!!
+    # Enter here your path to your test video!!!
+    vid_cap = open_video_capture('videos/street.mp4')
 
     if vid_cap is None:
         return
