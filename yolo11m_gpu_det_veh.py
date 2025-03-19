@@ -132,7 +132,7 @@ def main():
     if model is None:
         return
 
-    vid_cap = open_video_capture('videos/street.mp4')
+    vid_cap = open_video_capture('videos/street.mp4')    # Enter here your path to your test video!!!
 
     if vid_cap is None:
         return
