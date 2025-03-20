@@ -71,7 +71,7 @@ def process_objects(frame, model, object_counters, entered_ids):
         numpy.ndarray: Modified frame with bounding boxes and counters.
     """
     try:
-        results = model.track(frame, persist = True, classes = [0, 2, 7],device = 'cuda')
+        results = model.track(frame, persist = True, classes = [0, 2, 7], device = 'cuda')
 
         cv2.rectangle(frame, (RECT_X1, RECT_Y1), (RECT_X2, RECT_Y2), (255, 0, 0), 2)
 
@@ -129,7 +129,7 @@ def display_counters(frame, object_counters):
 
 def main():
     """
-    Main function to run the object detection and counting.
+    Main function to run the objects detection and counting them in ROI.
     """
     model = load_model('yolo11m.pt')
 
@@ -155,7 +155,7 @@ def main():
             frame = process_objects(frame, model, object_counters, entered_ids)
             frame = display_counters(frame, object_counters)
 
-            cv2.imshow("YOLO11m Vehicles Counting", frame)
+            cv2.imshow("YOLO11m Objects Counting", frame)
 
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 break
